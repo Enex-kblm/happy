@@ -37,6 +37,7 @@ if jawaban == "y":
     else:
         print("[!] Baiklah, tetapi kita masih bisa bermain walaupun experience permainan akan sedikit berkurang...")
         elevate()
+
 angka = random.randint(1, 2)
 tebak_angka = int(input("Tebak angka (1 atau 2): "))
 
